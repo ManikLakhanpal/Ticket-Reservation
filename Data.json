@@ -1,0 +1,28 @@
+[
+  {
+    "movie": "movie2",
+    "date": "2025-02-20",
+    "time": "17:00",
+    "tickets": "4",
+    "seat-type": "premium",
+    "name": "Sujal Garg",
+    "email": "sujalgarg202@gmail.com",
+    "phone": "123456789",
+    "card-number": "987",
+    "expiry-date": "2025-06",
+    "cvv": "222"
+  },
+  {
+    "movie": "movie2",
+    "date": "2025-02-20",
+    "time": "17:00",
+    "tickets": "4",
+    "seat-type": "premium",
+    "name": "Sujal Garg",
+    "email": "sujalgarg202@gmail.com",
+    "phone": "123456789",
+    "card-number": "987",
+    "expiry-date": "2025-06",
+    "cvv": "222"
+  }
+]
