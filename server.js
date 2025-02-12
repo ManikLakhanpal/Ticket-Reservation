@@ -19,6 +19,9 @@ app.get('/form.html',(req,res)=>{
     res.sendFile(path.join(__dirname, 'form.html'));
 })
 
+app.get('/login.html',(req,res)=>{
+    res.sendFile(path.join(__dirname, 'login.html'));
+})
 
 app.post('/submit-booking',(req,res)=>{
 
