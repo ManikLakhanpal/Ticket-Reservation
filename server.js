@@ -11,9 +11,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'main.html')); 
 });
 
+app.get('/Home_Page.html',(req,res)=>{
+    res.sendFile(path.join(__dirname, 'Home_Page.html'));
+})
+
 app.get('/form.html',(req,res)=>{
     res.sendFile(path.join(__dirname, 'form.html'));
 })
+
 
 app.post('/submit-booking',(req,res)=>{
 
