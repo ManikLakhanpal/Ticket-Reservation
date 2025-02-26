@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= movie.title %> - BookMyShow Clone</title>
+    <link rel="stylesheet" href="/css/movie.css">
+</head>
+<body>
+    <main>
+        <section class="movie-hero">
+            <div class="movie-poster">
+                <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
+            </div>
+            <div class="movie-info">
+                <h1><%= movie.title %></h1>
+                <p class="rating">⭐ <%= movie.rating %></p>
+                <p class="genre"><%= movie.genre %></p>
+                <p class="duration"><%= movie.duration %></p>
+                <p class="languages"><%= movie.languages %></p>
+                <button class="book-ticket">Book Tickets</button>
+            </div>
+        </section>
+
+        <section class="movie-details">
+            <h2>About the movie</h2>
+            <p><%= movie.description %></p>
+        </section>
+
+        <section class="cast">
+            <h2>Cast</h2>
+            <div class="cast-list">
+                <% movie.cast.forEach(person => { %>
+                    <div class="cast-member">
+                        <img src="<%= person.image %>" alt="<%= person.name %>">
+                        <p><%= person.name %></p>
+                        <p class="role"><%= person.role %></p>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+
+        <section class="crew">
+            <h2>Crew</h2>
+            <div class="crew-list">
+                <% movie.crew.forEach(person => { %>
+                    <div class="crew-member">
+                        <img src="<%= person.image %>" alt="<%= person.name %>">
+                        <p><%= person.name %></p>
+                        <p class="role"><%= person.role %></p>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BookMyShow Clone. All rights reserved.</p>
+    </footer>
+</body>
+</html>
