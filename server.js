@@ -4,7 +4,13 @@ import fs from "fs";
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static("public"));
+
+app.use((req, res, next) => {
+    console.log(req.url);
+    next();
+});
 
 app.set('view engine', 'ejs');
 
@@ -25,12 +31,22 @@ app.get('/movie/:id', (req, res) => {
 
 app.get('/book/:id', (req, res) => {
     const movie = movies[req.params.id];
-    
+
     if (movie) {
-        res.render('movie', { movie });
+
+        res.render('book', { movie });
+
     } else {
         res.status(404).send('Movie not found');
     }
+});
+
+app.post("/pay", (req, res) => {
+    const { email } = req.body;
+    if (!email) return res.status(400).json({ message: "Email is required" });
+
+    console.log(`Payment initiated for ${email}`);
+    res.json({ message: "Payment successful!" });
 });
 
 app.listen(3000, () => {

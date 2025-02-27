@@ -24,7 +24,15 @@
                 <p class="genre"><%= movie.genre %></p>
                 <p class="duration"><%= movie.duration %></p>
                 <p class="languages"><%= movie.languages %></p>
-                <button class="book-ticket">Book Tickets</button>
+                
+                <button class="book-ticket">
+                    <a 
+                        href="/book/<%= movie.title %>"
+                        style="text-decoration: none; color: white;"
+                    >
+                        Book Tickets
+                    </a>
+                </button>
             </div>
         </section>
 

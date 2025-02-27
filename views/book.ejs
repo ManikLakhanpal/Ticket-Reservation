@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= movie.title %> - BookMyShow Clone</title>
+    <link rel="stylesheet" href="/css/bookPage.css">
+</head>
+<body>
+    <a class="back-button" href="/">Back</a>
+    <main>
+        <section class="movie-hero">
+            <div class="movie-poster">
+                <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
+            </div>
+            <div class="movie-info">
+                <h1><%= movie.title %></h1>
+                <p class="rating">⭐ <%= movie.rating %></p>
+                <p class="genre"><%= movie.genre %></p>
+                <p class="duration"><%= movie.duration %></p>
+                <p class="languages"><%= movie.languages %></p>
+
+                <!-- Form for email input and payment -->
+                <form id="paymentForm">
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                    <button type="submit" class="book-ticket">Pay</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 BookMyShow Clone. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("paymentForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const email = document.getElementById("email").value;
+            if (!email) return alert("Please enter a valid email!");
+
+            try {
+                const response = await fetch("/pay", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email })
+                });
+
+                const result = await response.json();
+                alert(result.message);
+            } catch (error) {
+                console.error("Payment request failed", error);
+                alert("Something went wrong. Please try again!");
+            }
+        });
+    </script>
+</body>
+</html>
