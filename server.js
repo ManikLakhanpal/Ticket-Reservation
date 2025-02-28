@@ -1,6 +1,6 @@
 import express from "express";
 import fs from "fs";
-
+import path from "path";
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -47,6 +47,43 @@ app.post("/pay", (req, res) => {
 
     console.log(`Payment initiated for ${email}`);
     res.json({ message: "Payment successful!" });
+});
+
+const usersFilePath = path.join("./data", "users.json");
+if (!fs.existsSync(usersFilePath)) {
+    fs.writeFileSync(usersFilePath, JSON.stringify([]));
+}
+
+app.get('/login', (req, res) => {
+    res.render('login'); 
+});
+
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+
+    const users = JSON.parse(fs.readFileSync(usersFilePath, "utf8"));
+    const user = users.find(user => user.email === email && user.password === password);
+
+    if (user) {
+        res.send("Login successful! Welcome " + user.name);
+    } else {
+        res.send("Invalid email or password!");
+    }
+});
+
+app.post('/signup', (req, res) => {
+    const { name, email, password } = req.body;
+
+    const users = JSON.parse(fs.readFileSync(usersFilePath, "utf8"));
+
+    if (users.find(user => user.email === email)) {
+        return res.send("User already exists! Try logging in.");
+    }
+
+    users.push({ name, email, password });
+    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+
+    res.send("Signup successful! You can now login.");
 });
 
 app.listen(3000, () => {
