@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Signup</title>
+    <link rel="stylesheet" href="/css/login_style.css"> 
+</head>
+<body>
+    <div class="container">
+        <h2 class="form-title" id="form-heading">Login</h2>
+        
+        <!-- Login Form -->
+        <form id="login-form" action="/login" method="POST">
+            <div class="form-group">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me" style="display: inline; margin-bottom: 0;">Remember Me</label>
+            </div>
+            <button type="submit">Login</button>
+            <div class="switch-form" id="switch-to-signup">New user? Sign up</div>
+            <div id="form-message" class="form-message"></div>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signup-form" action="/signup" method="POST" style="display: none;">
+            <div class="form-group">
+                <label for="signup-name">Name:</label>
+                <input type="text" id="signup-name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+            <div class="switch-form" id="switch-to-login">Already a user? Login</div>
+            <div id="form-message-signup" class="form-message"></div>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const switchToSignup = document.getElementById('switch-to-signup');
+        const switchToLogin = document.getElementById('switch-to-login');
+        const formHeading = document.getElementById('form-heading');
+
+        switchToSignup.addEventListener('click', () => {
+            loginForm.style.display = 'none';
+            signupForm.style.display = 'block';
+            formHeading.textContent = "Sign Up";
+        });
+
+        switchToLogin.addEventListener('click', () => {
+            signupForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            formHeading.textContent = "Login";
+        });
+    </script>
+</body>
+</html>
