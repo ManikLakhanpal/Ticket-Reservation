@@ -21,7 +21,7 @@ app.get('/', (_, res) => {
 });
 
 app.get('/movie/:id', (req, res) => {
-    const movie = movies[req.params.id];
+    const movie = movies[req.params.id.replace(/%20/g, " ")];
     if (movie) {
         res.render('movie', { movie });
     } else {
@@ -30,8 +30,8 @@ app.get('/movie/:id', (req, res) => {
 });
 
 app.get('/book/:id', (req, res) => {
-    const movie = movies[req.params.id];
-
+    const movie = movies[req.params.id.replace(/%20/g, " ")];
+    console.log(req.params.id.replace(/%20/g, " "))
     if (movie) {
 
         res.render('book', { movie });

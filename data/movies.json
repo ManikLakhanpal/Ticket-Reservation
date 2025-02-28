@@ -42,7 +42,7 @@
             }
         ]
     },
-    "Avengers": {
+    "The Avengers": {
         "title": "The Avengers",
         "rating": "8.0/10",
         "genre": "Action, Adventure, Sci-Fi",
@@ -85,7 +85,7 @@
             }
         ]
     },
-    "Starwars": {
+    "Star Wars: A New Hope": {
         "title": "Star Wars: A New Hope",
         "rating": "8.6/10",
         "genre": "Action, Adventure, Fantasy",
@@ -128,7 +128,6 @@
             }
         ]
     },
-    
     "1917": {
         "title": "1917",
         "rating": "8.2/10",
@@ -167,7 +166,7 @@
             }
         ]
     },
-    "Kong:Skull Island": {
+    "Kong: Skull Island": {
         "title": "Kong: Skull Island",
         "rating": "6.7/10",
         "genre": "Action, Adventure, Fantasy",
@@ -238,7 +237,7 @@
             }
         ]
     },
-    "HOBBIT": {
+    "The Hobbit: An Unexpected Journey": {
         "title": "The Hobbit: An Unexpected Journey",
         "rating": "7.8/10",
         "genre": "Adventure, Fantasy",
@@ -305,7 +304,7 @@
         ]
     },
     "Kick Ass 2": {
-        "title": "Kick-Ass 2",
+        "title": "Kick Ass 2",
         "rating": "6.5/10",
         "genre": "Action, Comedy, Crime",
         "duration": "1h 43min",
@@ -337,7 +336,7 @@
             }
         ]
     },
-    "johnwick": {
+    "John Wick": {
         "title": "John Wick",
         "rating": "7.4/10",
         "genre": "Action, Crime, Thriller",
@@ -370,7 +369,7 @@
             }
         ]
     },
-    "Spiderman": {
+    "Spider-Man: No Way Home": {
         "title": "Spider-Man: No Way Home",
         "rating": "8.2/10",
         "genre": "Action, Adventure, Sci-Fi",
