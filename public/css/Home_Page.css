@@ -5,6 +5,22 @@
   body {
     font-family: "Roboto", sans-serif;
   }
+
+  .login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+}
   
   .navbar {
     width: 100%;

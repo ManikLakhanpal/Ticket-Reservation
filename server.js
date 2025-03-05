@@ -65,7 +65,7 @@ app.post('/login', (req, res) => {
     const user = users.find(user => user.email === email && user.password === password);
 
     if (user) {
-        res.send("Login successful! Welcome " + user.name);
+        res.redirect("/"); 
     } else {
         res.send("Invalid email or password!");
     }
@@ -83,7 +83,7 @@ app.post('/signup', (req, res) => {
     users.push({ name, email, password });
     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
 
-    res.send("Signup successful! You can now login.");
+    res.redirect("/"); 
 });
 
 app.listen(3000, () => {
