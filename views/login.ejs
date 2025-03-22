@@ -11,7 +11,7 @@
         <h2 class="form-title" id="form-heading">Sign In</h2>
         
         <!-- Login Form -->
-        <form id="login-form" action="/login" method="POST">
+        <form id="login-form" action="/api/auth/login" method="POST">
             <div class="form-group">
                 <label for="login-email">Email:</label>
                 <input type="email" id="login-email" name="email" required>
@@ -30,7 +30,7 @@
         </form>
 
         <!-- Signup Form -->
-        <form id="signup-form" action="/signup" method="POST" style="display: none;">
+        <form id="signup-form" action="/api/auth/signup" method="POST" style="display: none;">
             <div class="form-group">
                 <label for="signup-name">Name:</label>
                 <input type="text" id="signup-name" name="name" required>

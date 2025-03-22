@@ -1,7 +1,16 @@
 import express from "express";
 import fs from "fs";
 import path from "path";
+// import { fileURLToPath } from "url";
+import connectDB from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const app = express();
+
+connectDB();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -49,43 +58,33 @@ app.post("/pay", (req, res) => {
     res.json({ message: "Payment successful!" });
 });
 
-const usersFilePath = path.join("./data", "users.json");
-if (!fs.existsSync(usersFilePath)) {
-    fs.writeFileSync(usersFilePath, JSON.stringify([]));
-}
+// const usersFilePath = path.join("./data", "users.json");
+// if (!fs.existsSync(usersFilePath)) {
+//     fs.writeFileSync(usersFilePath, JSON.stringify([]));
+// }
 
-app.get('/login', (req, res) => {
-    res.render('login'); 
-});
+app.get("/login", (req, res) => res.render("login"));
+app.use("/api/auth", authRoutes);  // ✅ Ensure this is correct!
 
-app.post('/login', (req, res) => {
-    const { email, password } = req.body;
 
-    const users = JSON.parse(fs.readFileSync(usersFilePath, "utf8"));
-    const user = users.find(user => user.email === email && user.password === password);
 
-    if (user) {
-        res.redirect("/"); 
-    } else {
-        res.send("Invalid email or password!");
-    }
-});
 
-app.post('/signup', (req, res) => {
-    const { name, email, password } = req.body;
+// app.post('/signup', (req, res) => {
+//     const { name, email, password } = req.body;
 
-    const users = JSON.parse(fs.readFileSync(usersFilePath, "utf8"));
+//     const users = JSON.parse(fs.readFileSync(usersFilePath, "utf8"));
 
-    if (users.find(user => user.email === email)) {
-        return res.send("User already exists! Try logging in.");
-    }
+//     if (users.find(user => user.email === email)) {
+//         return res.send("User already exists! Try logging in.");
+//     }
 
-    users.push({ name, email, password });
-    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+//     users.push({ name, email, password });
+//     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
 
-    res.redirect("/"); 
-});
+//     res.redirect("/"); 
+// });
 
-app.listen(3000, () => {
-    console.log(`Server is running at http://localhost:3000`);
-});
+const PORT = process.env.PORT || 3000;
+
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
