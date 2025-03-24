@@ -1,8 +1,6 @@
 import express from "express";
 import fs from "fs";
-import path from "path";
-// import { fileURLToPath } from "url";
-import connectDB from "./config/db.js";
+import connectDB from "./database/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import dotenv from "dotenv";
 
@@ -22,6 +20,8 @@ app.use((req, res, next) => {
 });
 
 app.set('view engine', 'ejs');
+
+app.use("/api/auth", authRoutes); 
 
 const movies = JSON.parse(fs.readFileSync("./data/movies.json"), "utf8");
 
@@ -58,31 +58,8 @@ app.post("/pay", (req, res) => {
     res.json({ message: "Payment successful!" });
 });
 
-// const usersFilePath = path.join("./data", "users.json");
-// if (!fs.existsSync(usersFilePath)) {
-//     fs.writeFileSync(usersFilePath, JSON.stringify([]));
-// }
 
 app.get("/login", (req, res) => res.render("login"));
-app.use("/api/auth", authRoutes);  // ✅ Ensure this is correct!
-
-
-
-
-// app.post('/signup', (req, res) => {
-//     const { name, email, password } = req.body;
-
-//     const users = JSON.parse(fs.readFileSync(usersFilePath, "utf8"));
-
-//     if (users.find(user => user.email === email)) {
-//         return res.send("User already exists! Try logging in.");
-//     }
-
-//     users.push({ name, email, password });
-//     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
-
-//     res.redirect("/"); 
-// });
 
 const PORT = process.env.PORT || 3000;
 
