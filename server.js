@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
+const port = process.env.PORT;
 
 connectDB();
 
@@ -14,13 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use((req, res, next) => {
-    console.log(req.url);
-    next();
-});
-
 app.set('view engine', 'ejs');
-
 app.use("/api/auth", authRoutes); 
 
 const movies = JSON.parse(fs.readFileSync("./data/movies.json"), "utf8");
@@ -61,7 +56,7 @@ app.post("/pay", (req, res) => {
 
 app.get("/login", (req, res) => res.render("login"));
 
-const PORT = process.env.PORT || 3000;
 
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(port, () => 
+    console.log(`Server running on port ${port}`)
+);
