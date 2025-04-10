@@ -43,7 +43,10 @@
                 const response = await fetch("/pay", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email })
+                    body: JSON.stringify({ 
+                        email,
+                        movieTitle: "<%= movie.title %>" // send movie title for confirmation
+                    })
                 });
 
                 const result = await response.json();
