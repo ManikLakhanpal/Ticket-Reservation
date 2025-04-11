@@ -3,6 +3,8 @@ import fs from "fs";
 import connectDB from "./database/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import sendBookingConfirmation from "./controllers/emailController.js";
+import auth from "./middleware/auth.js";
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -13,15 +15,18 @@ const movies = JSON.parse(fs.readFileSync("./data/movies.json"), "utf8");
 
 connectDB();
 
+// * MiddleWares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(cookieParser());
 
 app.set('view engine', 'ejs');
 app.use("/api/auth", authRoutes); 
 
 
-app.get('/', (_, res) => {
+app.get('/', auth, (req, res) => {
+    console.log('accessed')
     res.render('home', { movies: Object.keys(movies) });
 });
 
@@ -66,5 +71,5 @@ app.post("/pay", (req, res) => {
 app.get("/login", (req, res) => res.render("login"));
 
 app.listen(port, () => 
-    console.log(`Server running on port ${port}`)
+    console.log(`Server running on port http://localhost:${port}`)
 );
