@@ -78,12 +78,17 @@ app.get('/book/:id', (req, res) => {
     }
 });
 
+// ✅ Updated this route to use movieTitle instead of movieId
 app.post("/pay", (req, res) => {
-    const { email, movieId } = req.body;
-    if (!email || !movieId) return res.status(400).json({ message: "Email and movieId are required" });
+    const { email, movieTitle } = req.body;
+    if (!email || !movieTitle) {
+        return res.status(400).json({ message: "Email and movieTitle are required" });
+    }
 
-    const movie = movies[movieId.replace(/%20/g, " ")];
-    if (!movie) return res.status(404).json({ message: "Movie not found" });
+    const movie = movies[movieTitle];
+    if (!movie) {
+        return res.status(404).json({ message: "Movie not found" });
+    }
 
     console.log(`Payment initiated for ${email}`);
 
