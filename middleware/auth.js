@@ -19,8 +19,11 @@ async function auth(req, res, next) {
             throw new Error('Invalid token'); 
         }
 
-        const user = decoded._id
-        
+        const user = {
+            id: decoded._id,
+            email: decoded.email
+        }
+
         if (!user) {
             res.redirect('/login')
         }

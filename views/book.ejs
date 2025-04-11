@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= movie.title %> - BookMyShow Clone</title>
+    <title><%= movie.title %> Ticket Reservation</title>
     <link rel="stylesheet" href="/css/bookPage.css">
 </head>
 <body>
@@ -22,26 +22,23 @@
 
                 <!-- Form for email input and payment -->
                 <form id="paymentForm">
-                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
                     <!-- Hidden input to pass movie title -->
-                    <input type="hidden" name="movieTitle" id="movieTitle" value="<%= movie.title %>">
                     <button type="submit" class="book-ticket">Pay</button>
                 </form>
             </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2025 BookMyShow Clone. All rights reserved.</p>
+        <p>&copy; 2025 Ticket Reservatuion. All rights reserved.</p>
     </footer>
 
     <script>
         document.getElementById("paymentForm").addEventListener("submit", async function(event) {
             event.preventDefault();
 
-            const email = document.getElementById("email").value;
-            const movieTitle = document.getElementById("movieTitle").value;
+            const movieTitle = "<%= movie.title %>";
 
-            if (!email || !movieTitle) {
+            if (!movieTitle) {
                 return alert("Email and movie title are required!");
             }
 
@@ -49,7 +46,7 @@
                 const response = await fetch("/pay", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email, movieTitle })
+                    body: JSON.stringify({ movieTitle })
                 });
 
                 const result = await response.json();
