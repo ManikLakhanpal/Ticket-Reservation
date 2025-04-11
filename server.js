@@ -2,13 +2,14 @@ import express from "express";
 import fs from "fs";
 import connectDB from "./database/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import sendBookingConfirmation from "./controllers/emailController.js";
 import dotenv from "dotenv";
-import nodemailer from "nodemailer"; // ✅ Added for email
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
+const movies = JSON.parse(fs.readFileSync("./data/movies.json"), "utf8");
 
 connectDB();
 
@@ -19,41 +20,6 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use("/api/auth", authRoutes); 
 
-const movies = JSON.parse(fs.readFileSync("./data/movies.json"), "utf8");
-
-// ✅ Setup Nodemailer transporter
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
-
-// ✅ Function to send booking confirmation
-const sendBookingConfirmation = (email, movie) => {
-    const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject: `🎟️ Your Ticket for ${movie.title} is Confirmed!`,
-        html: `
-            <h2>Booking Confirmation</h2>
-            <p><strong>Movie:</strong> ${movie.title}</p>
-            <p><strong>Genre:</strong> ${movie.genre}</p>
-            <p><strong>Duration:</strong> ${movie.duration}</p>
-            <p><strong>Languages:</strong> ${movie.languages}</p>
-            <p>Enjoy the show! 🍿</p>
-        `
-    };
-
-    transporter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-            console.error("Error sending email:", err);
-        } else {
-            console.log("Email sent:", info.response);
-        }
-    });
-};
 
 app.get('/', (_, res) => {
     res.render('home', { movies: Object.keys(movies) });

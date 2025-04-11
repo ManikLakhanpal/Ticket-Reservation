@@ -4,9 +4,17 @@ async function loginUser(req, res) {
     const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({ email, password });
+        const user = await User.findByCredentials(email, password);
+        const token = await user.generateAuthToken();
 
         if (user) {
+            res.cookie('auth_token', token, {
+                httpOnly: true,
+                secure: (process.env.PROD == true) ? true : false, 
+                sameSite: 'None',
+                maxAge: 3 * 60 * 60 * 1000 // * 3 hours
+            });
+
             res.redirect("/");
         } else {
             res.send("Invalid email or password!");
@@ -29,9 +37,16 @@ async function signupUser (req, res) {
 
         const newUser = new User({ name, email, password });
         await newUser.save();
+        const token = await user.generateAuthToken();
 
         console.log("✅ User saved in MongoDB:", newUser);
 
+        res.cookie('auth_token', token, {
+            httpOnly: true,
+            secure: (process.env.PROD == true) ? true : false, 
+            sameSite: 'None',
+            maxAge: 3 * 60 * 60 * 1000 // * 3 hours
+        });
         res.redirect("/");
     } catch (error) {
         console.error("Signup Error:", error);
