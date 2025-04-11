@@ -20,7 +20,7 @@ async function auth(req, res, next) {
         }
 
         const user = {
-            id: decoded._id,
+            uid: decoded._id,
             email: decoded.email
         }
 
