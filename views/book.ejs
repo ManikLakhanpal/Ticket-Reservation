@@ -23,6 +23,8 @@
                 <!-- Form for email input and payment -->
                 <form id="paymentForm">
                     <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                    <!-- Hidden input to pass movie title -->
+                    <input type="hidden" name="movieTitle" id="movieTitle" value="<%= movie.title %>">
                     <button type="submit" class="book-ticket">Pay</button>
                 </form>
             </div>
@@ -34,19 +36,20 @@
 
     <script>
         document.getElementById("paymentForm").addEventListener("submit", async function(event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault();
 
             const email = document.getElementById("email").value;
-            if (!email) return alert("Please enter a valid email!");
+            const movieTitle = document.getElementById("movieTitle").value;
+
+            if (!email || !movieTitle) {
+                return alert("Email and movie title are required!");
+            }
 
             try {
                 const response = await fetch("/pay", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ 
-                        email,
-                        movieTitle: "<%= movie.title %>" // send movie title for confirmation
-                    })
+                    body: JSON.stringify({ email, movieTitle })
                 });
 
                 const result = await response.json();
