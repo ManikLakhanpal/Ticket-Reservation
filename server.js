@@ -2,6 +2,7 @@ import express from "express";
 import connectDB from "./database/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import mainRoutes from "./routes/mainRoutes.js";
+import paymentRoutes from "./routes/razorpayRoutes.js";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.set('view engine', 'ejs');
 app.use("/api/auth", authRoutes); 
 app.use("/", mainRoutes);
+app.use("/", paymentRoutes);
 
 app.listen(port, () => 
     console.log(`Server running on port http://localhost:${port}`)

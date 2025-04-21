@@ -1,104 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= movie.title %> - BookMyShow Clone</title>
-    <link rel="stylesheet" href="/css/movie.css">
-</head>
-<body>
-    <a 
-    class="back-button"
-    href="/"
-    >
-        Back
-    </a>
+    <link rel="stylesheet" href="/css/movie.css" />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </head>
+  <body>
+    <a class="back-button" href="/"> Back </a>
     <main>
-        <section class="movie-hero">
-            <div class="movie-poster">
-                <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
-            </div>
-            <div class="movie-info">
-                <h1><%= movie.title %></h1>
-                <p class="rating">⭐ <%= movie.rating %></p>
-                <p class="genre"><%= movie.genre %></p>
-                <p class="duration"><%= movie.duration %></p>
-                <p class="languages"><%= movie.languages %></p>
-                <p style="color: rgb(50, 226, 50);">₹<%= movie.price %></p>
-                
-                <form id="paymentForm">
-                    <button type="submit" class="book-ticket" style="text-decoration: none; color: white;">
-                        Book Now
-                    </button>
-                </form>
-            </div>
-        </section>
+      <section class="movie-hero">
+        <div class="movie-poster">
+          <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster" />
+        </div>
+        <div class="movie-info">
+          <h1><%= movie.title %></h1>
+          <p class="rating">⭐ <%= movie.rating %></p>
+          <p class="genre"><%= movie.genre %></p>
+          <p class="duration"><%= movie.duration %></p>
+          <p class="languages"><%= movie.languages %></p>
+          <p style="color: rgb(50, 226, 50)">₹<%= movie.price %></p>
 
-        <section class="movie-details">
-            <h2>About the movie</h2>
-            <p><%= movie.description %></p>
-        </section>
+          <form id="paymentForm">
+            <button
+              type="submit"
+              class="book-ticket"
+              style="text-decoration: none; color: white"
+            >
+              Book Now
+            </button>
+          </form>
+        </div>
+      </section>
 
-        <section class="cast">
-            <h2>Cast</h2>
-            <div class="cast-list">
-                <% movie.cast.forEach(person => { %>
-                    <div class="cast-member">
-                        <img src="<%= person.image %>" alt="<%= person.name %>">
-                        <p><%= person.name %></p>
-                        <p class="role"><%= person.role %></p>
-                    </div>
-                <% }); %>
-            </div>
-        </section>
+      <section class="movie-details">
+        <h2>About the movie</h2>
+        <p><%= movie.description %></p>
+      </section>
 
-        <section class="crew">
-            <h2>Crew</h2>
-            <div class="crew-list">
-                <% movie.crew.forEach(person => { %>
-                    <div class="crew-member">
-                        <img src="<%= person.image %>" alt="<%= person.name %>">
-                        <p><%= person.name %></p>
-                        <p class="role"><%= person.role %></p>
-                    </div>
-                <% }); %>
-            </div>
-        </section>
+      <section class="cast">
+        <h2>Cast</h2>
+        <div class="cast-list">
+          <% movie.cast.forEach(person => { %>
+          <div class="cast-member">
+            <img src="<%= person.image %>" alt="<%= person.name %>" />
+            <p><%= person.name %></p>
+            <p class="role"><%= person.role %></p>
+          </div>
+          <% }); %>
+        </div>
+      </section>
+
+      <section class="crew">
+        <h2>Crew</h2>
+        <div class="crew-list">
+          <% movie.crew.forEach(person => { %>
+          <div class="crew-member">
+            <img src="<%= person.image %>" alt="<%= person.name %>" />
+            <p><%= person.name %></p>
+            <p class="role"><%= person.role %></p>
+          </div>
+          <% }); %>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 BookMyShow Clone. All rights reserved.</p>
+      <p>&copy; 2025 BookMyShow Clone. All rights reserved.</p>
     </footer>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
-        document.getElementById("paymentForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
+      document.getElementById("paymentForm").addEventListener("submit", async function (event) {
+          event.preventDefault();
 
-            const movieTitle = "<%= movie.title %>";
+          const amount = "<%= movie.price %>";
+          const movieTitle = "<%= movie.title %>";
 
-            const proceed = confirm("Are you sure you want to buy the ticket?");
+          const proceed = confirm(`Book a ticket for ₹${amount}?`);
+          if (!proceed) return alert("Booking cancelled.");
 
-            if (!proceed) {
-                return alert("Request was not processed");
-            }
+          try {
+              // * Step 1: Create order
+              const orderResponse = await fetch("/order", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ amount, movieTitle }) // amount should be in INR
+              });
 
-            if (!movieTitle) {
-                return alert("Email and movie title are required!");
-            }
+              const orderData = await orderResponse.json();
 
-            try {
-                const response = await fetch("/pay", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ movieTitle })
-                });
+              if (!orderData || !orderData.id) {
+                  return alert("Failed to create Razorpay order.");
+              }
 
-                const result = await response.json();
-                alert(result.message);
-            } catch (error) {
-                console.error("Payment request failed", error);
-                alert("Something went wrong. Please try again!");
-            }
-        });
+              // * Step 2: Launch Razorpay checkout
+              const options = {
+                  key: "<%= process.env.RAZORPAY_KEY_ID %>", // Key ID (public key)
+                  amount: orderData.amount,
+                  currency: "INR",
+                  name: "Manik Lakhanpal",
+                  order_id: orderData.id,
+                  handler: async function (response) {
+                      // * Step 3: Send payment verification data to backend
+                      const verifyResponse = await fetch("/payment-success-status", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                              razorpay_order_id: response.razorpay_order_id,
+                              razorpay_payment_id: response.razorpay_payment_id,
+                              razorpay_signature: response.razorpay_signature,
+                              movieTitle: movieTitle,
+                              price: orderData.amount,
+                          })
+                      });
+
+                      const verifyResult = await verifyResponse.json();
+
+                      if (verifyResult.success) {
+                          alert("✅ Payment successful and verified!");
+                      } else {
+                          alert("⚠️ Payment verification failed.");
+                      }
+                  },
+                  theme: {
+                      color: "#F84464"
+                  }
+              };
+
+              const rzp = new Razorpay(options);
+              rzp.open();
+          } catch (error) {
+              console.error("Error during payment:", error);
+              alert("Something went wrong. Please try again.");
+          }
+      });
     </script>
-</body>
+  </body>
 </html>
