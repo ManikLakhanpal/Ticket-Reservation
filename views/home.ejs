@@ -1,379 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/Home_Page.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/Home_Page.css" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
     <title>Movie Design</title>
-</head>
+    <style>
+      /* Add any additional styles here */
+      .movie-list-item-img {
+        max-height: 200px;
+        object-fit: contain;
+      }
+      .featured-content {
+        background-size: cover !important;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
     <div class="navbar">
-        <div class="navbar-container">
-            <div class="logo-container">
-                <h1 class="logo">FRENZY</h1>
-            </div>
-            <div class="menu-container">
-                <ul class="menu-list">
-                    <li class="menu-list-item active">Home</li>
-                    <li class="menu-list-item">Movies</li>
-                    <li class="menu-list-item">Series</li>
-                    <li class="menu-list-item">Popular</li>
-                    <li class="menu-list-item">Trends</li>
-
-                </ul>
-            </div>
-            <div class="profile-container">
-                <img class="profile-picture" src="img/super-saiyan-blue-5120x2880-17603.jpg" alt="">
-                <a href="/login" class="login-button">Sign In</a>
-                <div class="toggle">
-                    <i class="fas fa-moon toggle-icon"></i>
-                    <i class="fas fa-sun toggle-icon"></i>
-                    <div class="toggle-ball"></div>
-                </div>
-            </div>
+      <div class="navbar-container">
+        <div class="logo-container">
+          <h1 class="logo">FRENZY</h1>
         </div>
+        <div class="menu-container">
+          <ul class="menu-list">
+            <li class="menu-list-item active">Home</li>
+            <li class="menu-list-item">Movies</li>
+            <li class="menu-list-item">Series</li>
+            <li class="menu-list-item">Popular</li>
+            <li class="menu-list-item">Trends</li>
+          </ul>
+        </div>
+        <div class="profile-container">
+          <img
+            class="profile-picture"
+            src="img/super-saiyan-blue-5120x2880-17603.jpg"
+            alt=""
+          />
+          <a href="/login" class="login-button">Sign In</a>
+          <div class="toggle">
+            <i class="fas fa-moon toggle-icon"></i>
+            <i class="fas fa-sun toggle-icon"></i>
+            <div class="toggle-ball"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="sidebar">
-        <i class="left-menu-icon fas fa-search"></i>
-        <i class="left-menu-icon fas fa-home"></i>
-        <i class="left-menu-icon fas fa-users"></i>
-        <i class="left-menu-icon fas fa-bookmark"></i>
-        <i class="left-menu-icon fas fa-tv"></i>
-        <i class="left-menu-icon fas fa-hourglass-start"></i>
-        <i class="left-menu-icon fas fa-shopping-cart"></i>
+      <i class="left-menu-icon fas fa-search"></i>
+      <i class="left-menu-icon fas fa-home"></i>
+      <i class="left-menu-icon fas fa-users"></i>
+      <i class="left-menu-icon fas fa-bookmark"></i>
+      <i class="left-menu-icon fas fa-tv"></i>
+      <i class="left-menu-icon fas fa-hourglass-start"></i>
+      <i class="left-menu-icon fas fa-shopping-cart"></i>
     </div>
     <div class="container">
-        <div class="content-container">
-            <div class="featured-content"
-                style="background: linear-gradient(to bottom, rgba(151, 7, 7, 0), #151515), url('img/f-1.jpg');">
-                <img class="featured-title" src="img/john wick.avif" alt="">
-                <p class="featured-desc">John Wick is an American neo-noir crime action film series and media franchise
-                    created by Derek Kolstad. It centers on the titular character portrayed by actor Keanu Reeves. Wick
-                    is a legendary hitman who is reluctantly drawn back into the criminal underworld after retiring.
-                </p>
-                <a href="/movie/johnwick">
-                    <button class="featured-button">Book now</button>
-                </a>
-            </div>
-            <div class="movie-list-container">
-                <h1 class="movie-list-title">NEW RELEASES</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/avengersendgame.jpg" alt="">
-                            <span class="movie-list-item-title">Avengers</span>
-                            <p class="movie-list-item-desc">In the film, the surviving members of the Avengers and their
-                                allies attempt to reverse Thanos's actions in Infinity War which erased half of all life
-                                in the universe. </p>
-                            <a href="/movie/The Avengers">
-                                <button class="movie-list-item-button">Book Now</button>
-                            </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/Starwars.jpeg" alt="">
-                            <span class="movie-list-item-title">Star Wars</span>
-                            <p class="movie-list-item-desc">Star Wars is an American epic space opera media franchise
-                                created by George Lucas, which began with the eponymous 1977 film and quickly became a
-                                worldwide pop culture phenomenon. </p>
-                                <a href="/movie/Starwars">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/3.jpg" alt="">
-                            <span class="movie-list-item-title">Storm</span>
-                            <p class="movie-list-item-desc">Follow the story of the people who were expelled from
-                                Krajina in 1995 and the suffering of the Serb people in Croatia.</p>
-                                <a href="/movie/Storm">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/4.jpg" alt="">
-                            <span class="movie-list-item-title">1917</span>
-                            <p class="movie-list-item-desc"> The film is set during World War I and follows two British
-                                soldiers, Will Schofield (George MacKay) and Tom Blake (Dean-Charles Chapman), on a
-                                mission to deliver an important message that could save 1,600 men from a deadly trap..
-                            </p>
-                            <a href="/movie/1917">
-                                <button class="movie-list-item-button">Book Now</button>
-                            </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Avengers</span>
-                            <p class="movie-list-item-desc">...</p>
-                            <a href="/movie/Avengers">
-                                <button class="movie-list-item-button">Book Now</button>
-                            </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/6.jpg" alt="">
-                            <span class="movie-list-item-title">Kong:Skull Island</span>
-                            <p class="movie-list-item-desc"> the film follows a team of scientists and Vietnam War
-                                soldiers travelling to the uncharted Skull Island and meeting Kong, one of the last of
-                                his species of gigantic apes, closely followed by other terrifying creatures.</p>
-                                <a href="/movie/Kong:Skull Island">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <!-- <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/7.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div> -->
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-            </div>
-            <div class="movie-list-container">
-                <h1 class="movie-list-title">NEW RELEASES</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/8.jpg" alt="">
-                            <span class="movie-list-item-title">OBLIVION</span>
-                            <p class="movie-list-item-desc">Set in 2077 on an Earth desolated by an alien war; a
-                                maintenance technician on the verge of completing his mission finds a woman who survived
-                                from a space ship crash, leading him to question his purpose and discover the truth
-                                about the war.</p>
-                                <a href="/movie/OBLIVION">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/9.jpg" alt="">
-                            <span class="movie-list-item-title">HOBBIT</span>
-                            <p class="movie-list-item-desc">The story follows Bilbo Baggins (Martin Freeman), who is
-                                convinced by the wizard Gandalf (Ian McKellen) to accompany thirteen Dwarves, led by
-                                Thorin Oakenshield (Richard Armitage), on a quest to reclaim the Lonely Mountain from
-                                the dragon Smaug.</p>
-                                <a href="/movie/HOBBIT">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/10.jpg" alt="">
-                            <span class="movie-list-item-title">Due Date</span>
-                            <p class="movie-list-item-desc">High-strung father-to-be Peter Highman is forced to hitch a
-                                ride with aspiring actor Ethan Tremblay on a road trip in order to make it to his
-                                child's birth on time.</p>
-                                <a href="/movie/Due Date">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/11.jpg" alt="">
-                            <span class="movie-list-item-title">Kick Ass 2</span>
-                            <p class="movie-list-item-desc">Following Kick-Ass' heroics, other citizens are inspired to
-                                become masked crusaders, but Red Mist leads his own group of evil super-villains to get
-                                revenge, kill Kick-Ass, and destroy everything he stands for.</p>
-                                <a href="/movie/Kick Ass 2">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/12.jpg" alt="">
-                            <span class="movie-list-item-title">The Emoji</span>
-                            <p class="movie-list-item-desc">Gene, a multi-expressional emoji, sets out on a journey to
-                                become a normal emoji.
-
-                            </p>
-                            <a href="/movie/The Emoji">
-                                <button class="movie-list-item-button">Book Now</button>
-                            </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/Interstellar.webp" alt="">
-                            <span class="movie-list-item-title">Interstellar</span>
-                            <p class="movie-list-item-desc">When Earth becomes uninhabitable in the future, a farmer and
-                                ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of
-                                researchers, to find a new planet for humans.
-
-                            </p>
-                            <a href="/movie/Interstellar">
-                                <button class="movie-list-item-button">Book Now</button>
-                            </a>
-                        </div>
-                        <!-- <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div> -->
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-            </div>
-            <div class="featured-content"
-                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/f-2.jpg');">
-                <img class="featured-title" src="img/f-t-2.png" alt="">
-                <p class="featured-desc">A family saga with a supernatural twist, set in a German town where the
-                    disappearance of two young children exposes the relationships among four families. </p>
-                    <a href="/movie/Dark">
-                        <button class="featured-button">Book Now</button>
-                    </a>
-            </div>
-            <div class="movie-list-container">
-                <h1 class="movie-list-title">NEW RELEASES</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/1.jpeg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">In the near future, a lonely writer develops an unlikely
-                                relationship with an operating system designed to meet his every need. </p>
-                                <a href="/movie/Her">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/Salaar.webp" alt="">
-                            <span class="movie-list-item-title">Salaar</span>
-                            <p class="movie-list-item-desc">The fate of a violently contested kingdom hangs on the
-                                fraught bond between two friends-turned-foes in this saga of power, bloodshed and
-                                betrayal. </p>
-                                <a href="/movie/Salaar">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/15.jpg" alt="">
-                            <span class="movie-list-item-title">The Lego Movie</span>
-                            <p class="movie-list-item-desc">An ordinary LEGO construction worker, thought to be the
-                                prophesied as "special", is recruited to join a quest to stop an evil tyrant from gluing
-                                the LEGO universe into eternal stasis. </p>
-                                <a href="/movie/The Lego Movie">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/3.jpg" alt="">
-                            <span class="movie-list-item-title">Storm</span>
-                            <p class="movie-list-item-desc">Follow the story of the people who were expelled from
-                                Krajina in 1995 and the suffering of the Serb people in Croatia.</p>
-                                <a href="/movie/Storm">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/4.jpg" alt="">
-                            <span class="movie-list-item-title">1917</span>
-                            <p class="movie-list-item-desc">The film is set during World War I and follows two British
-                                soldiers, Will Schofield (George MacKay) and Tom Blake (Dean-Charles Chapman), on a
-                                mission to deliver an important message that could save 1,600 men from a deadly trap..
-                            </p>
-                            <a href="/movie/1917">
-                                <button class="movie-list-item-button">Book Now</button>
-                            </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Avengers</span>
-                            <p class="movie-list-item-desc">After the devastating events of Avengers: Infinity War
-                                (2018), the universe is in ruins. With the help of remaining allies, the Avengers
-                                assemble once more in order to reverse Thanos' actions and restore balance to the
-                                universe.
-
-                            </p>
-                            <a href="/movie/Avengers">
-                                <button class="movie-list-item-button">Book Now</button>
-                            </a>
-                        </div>
-                        <!-- <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div> -->
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-            </div>
-            <div class="movie-list-container">
-                <h1 class="movie-list-title">NEW RELEASES</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/17.jpg" alt="">
-                            <span class="movie-list-item-title">AQUAMAN</span>
-                            <p class="movie-list-item-desc">Arthur Curry, the human-born heir to the underwater kingdom
-                                of Atlantis, goes on a quest to prevent a war between the worlds of ocean and land. </p>
-                                <a href="/movie/AQUAMAN">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/18.jpg" alt="">
-                            <span class="movie-list-item-title">Fairy Tail</span>
-                            <p class="movie-list-item-desc">Lucy, an aspiring Celestial Wizard, becomes a friend and
-                                ally to powerful wizards Natsu, Gray, and Erza, who are part of the (in)famous wizard
-                                guild, Fairy Tail. </p>
-                                <a href="/movie/Fairy Tail">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/19.jpg" alt="">
-                            <span class="movie-list-item-title">Spiderman</span>
-                            <p class="movie-list-item-desc">With Spider-Man's identity now revealed, Peter asks Doctor
-                                Strange for help. When a spell goes wrong, dangerous foes from other worlds start to
-                                appear.
-
-                            </p>
-                            <a href="/movie/Spiderman">
-                                <button class="movie-list-item-button">Book Now</button>
-                            </a>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/Aladdin.jpeg" alt="">
-                            <span class="movie-list-item-title">Aladdin</span>
-                            <p class="movie-list-item-desc">Aladdin, a kind thief, woos Jasmine, the princess of
-                                Agrabah, with the help of Genie. When Jafar, the grand vizier, tries to usurp the king,
-                                Jasmine, Aladdin and Genie must stop him from succeeding. </p>
-                                <a href="/movie/Aladdin">
-                                    <button class="movie-list-item-button">Book Now</button>
-                                </a>
-                        </div>
-                        <!-- <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div> -->
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-            </div>
+      <div class="content-container">
+        <!-- Featured Content - First Movie -->
+        <% const firstMovie = Object.values(movies)[0]; %>
+        <div
+          class="featured-content"
+          style="
+            background: linear-gradient(to bottom, rgba(151, 7, 7, 0), #151515),
+              url('<%= firstMovie.poster %>');
+          "
+        >
+          <img
+            class="featured-title"
+            src="<%= firstMovie.poster %>"
+            alt="<%= firstMovie.title %>"
+          />
+          <p class="featured-desc"><%= firstMovie.description %></p>
+          <a href="/movie/<%= encodeURIComponent(firstMovie.title) %>">
+            <button class="featured-button">Book now</button>
+          </a>
         </div>
+
+        <!-- First Movie List -->
+        <div class="movie-list-container">
+          <h1 class="movie-list-title">SCI-FI MOVIES</h1>
+          <div class="movie-list-wrapper">
+            <div class="movie-list">
+              <% Object.values(movies).filter(movie =>
+              movie.genre.includes('Sci-Fi')).slice(0, 6).forEach(movie => { %>
+              <div class="movie-list-item">
+                <img
+                  class="movie-list-item-img"
+                  src="<%= movie.poster %>"
+                  alt="<%= movie.title %>"
+                />
+                <span class="movie-list-item-title"><%= movie.title %></span>
+                <p class="movie-list-item-desc">
+                  <%= movie.description.substring(0, 100) %>...
+                </p>
+                <p class="movie-list-item-rating"><%= movie.rating %></p>
+                <a href="/movie/<%= encodeURIComponent(movie.title) %>">
+                  <button class="movie-list-item-button">Book Now</button>
+                </a>
+              </div>
+              <% }); %>
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+          </div>
+        </div>
+
+        <!-- Second Movie List -->
+        <div class="movie-list-container">
+          <h1 class="movie-list-title">ACTION MOVIES</h1>
+          <div class="movie-list-wrapper">
+            <div class="movie-list">
+              <% Object.values(movies).filter(movie =>
+              movie.genre.includes('Action')).slice(0, 6).forEach(movie => { %>
+              <div class="movie-list-item">
+                <img
+                  class="movie-list-item-img"
+                  src="<%= movie.poster %>"
+                  alt="<%= movie.title %>"
+                />
+                <span class="movie-list-item-title"><%= movie.title %></span>
+                <p class="movie-list-item-desc">
+                  <%= movie.description.substring(0, 100) %>...
+                </p>
+                <p class="movie-list-item-rating"><%= movie.rating %></p>
+                <a href="/movie/<%= encodeURIComponent(movie.title) %>">
+                  <button class="movie-list-item-button">Book Now</button>
+                </a>
+              </div>
+              <% }); %>
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+          </div>
+        </div>
+
+        <!-- Second Featured Content -->
+        <% const secondMovie = Object.values(movies).find(movie =>
+        movie.genre.includes('Adventure')); %> <% if (secondMovie) { %>
+        <div
+          class="featured-content"
+          style="
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
+              url('<%= secondMovie.poster %>');
+          "
+        >
+          <img
+            class="featured-title"
+            src="<%= secondMovie.poster %>"
+            alt="<%= secondMovie.title %>"
+          />
+          <p class="featured-desc"><%= secondMovie.description %></p>
+          <a href="/movie/<%= encodeURIComponent(secondMovie.title) %>">
+            <button class="featured-button">Book Now</button>
+          </a>
+        </div>
+        <% } %>
+
+        <!-- Third Movie List -->
+        <div class="movie-list-container">
+          <h1 class="movie-list-title">ADVENTURE MOVIES</h1>
+          <div class="movie-list-wrapper">
+            <div class="movie-list">
+              <% Object.values(movies).filter(movie =>
+              movie.genre.includes('Adventure')).slice(0, 6).forEach(movie => {
+              %>
+              <div class="movie-list-item">
+                <img
+                  class="movie-list-item-img"
+                  src="<%= movie.poster %>"
+                  alt="<%= movie.title %>"
+                />
+                <span class="movie-list-item-title"><%= movie.title %></span>
+                <p class="movie-list-item-desc">
+                  <%= movie.description.substring(0, 100) %>...
+                </p>
+                <p class="movie-list-item-rating"><%= movie.rating %></p>
+                <a href="/movie/<%= encodeURIComponent(movie.title) %>">
+                  <button class="movie-list-item-button">Book Now</button>
+                </a>
+              </div>
+              <% }); %>
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+          </div>
+        </div>
+
+        <!-- Fourth Movie List -->
+        <div class="movie-list-container">
+          <h1 class="movie-list-title">ALL MOVIES</h1>
+          <div class="movie-list-wrapper">
+            <div class="movie-list">
+              <% Object.values(movies).slice(0, 6).forEach(movie => { %>
+              <div class="movie-list-item">
+                <img
+                  class="movie-list-item-img"
+                  src="<%= movie.poster %>"
+                  alt="<%= movie.title %>"
+                />
+                <span class="movie-list-item-title"><%= movie.title %></span>
+                <p class="movie-list-item-desc">
+                  <%= movie.description.substring(0, 100) %>...
+                </p>
+                <p class="movie-list-item-rating"><%= movie.rating %></p>
+                <a href="/movie/<%= encodeURIComponent(movie.title) %>">
+                  <button class="movie-list-item-button">Book Now</button>
+                </a>
+              </div>
+              <% }); %>
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="Home_Page.js"></script>
-</body>
+    <script>
+      // Carousel functionality
+      const arrows = document.querySelectorAll(".arrow");
+      const movieLists = document.querySelectorAll(".movie-list");
 
+      arrows.forEach((arrow, i) => {
+        const itemNumber = movieLists[i].querySelectorAll("img").length;
+        let clickCounter = 0;
+        arrow.addEventListener("click", () => {
+          const ratio = Math.floor(window.innerWidth / 270);
+          clickCounter++;
+          if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
+            movieLists[i].style.transform = `translateX(${
+              movieLists[i].computedStyleMap().get("transform")[0].x.value - 300
+            }px)`;
+          } else {
+            movieLists[i].style.transform = "translateX(0)";
+            clickCounter = 0;
+          }
+        });
+      });
+
+      // Dark mode toggle
+      const ball = document.querySelector(".toggle-ball");
+      const items = document.querySelectorAll(
+        ".container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
+      );
+
+      ball.addEventListener("click", () => {
+        items.forEach((item) => {
+          item.classList.toggle("active");
+        });
+        ball.classList.toggle("active");
+      });
+    </script>
+  </body>
 </html>

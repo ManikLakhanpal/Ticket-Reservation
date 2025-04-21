@@ -6,10 +6,13 @@ import { Router } from "express";
 
 const router = Router();
 
-const movies = JSON.parse(fs.readFileSync("./data/movies.json"), "utf8");
+const movies = JSON.parse(fs.readFileSync("./data/movies.json", "utf8"));
 
-router.get("/", auth, (req, res) => {
-  res.render("home", { movies: Object.keys(movies) });
+router.get("/", auth, (_, res) => {
+  res.render("home", { 
+    movies: Object.values(movies),  
+    featuredMovies: [movies["John Wick"], movies["Interstellar"]] 
+  });
 });
 
 router.get("/movie/:id", auth, (req, res) => {
