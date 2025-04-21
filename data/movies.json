@@ -1,6 +1,7 @@
 {
     "Interstellar": {
         "title": "Interstellar",
+        "price": 500,
         "rating": "8.6/10",
         "genre": "Sci-Fi, Adventure, Drama",
         "duration": "2h 49min",
@@ -44,6 +45,7 @@
     },
     "The Avengers": {
         "title": "The Avengers",
+        "price": 500,
         "rating": "8.0/10",
         "genre": "Action, Adventure, Sci-Fi",
         "duration": "2h 23min",
@@ -87,6 +89,7 @@
     },
     "Star Wars: A New Hope": {
         "title": "Star Wars: A New Hope",
+        "price": 500,
         "rating": "8.6/10",
         "genre": "Action, Adventure, Fantasy",
         "duration": "2h 1min",
@@ -130,6 +133,7 @@
     },
     "1917": {
         "title": "1917",
+        "price": 500,
         "rating": "8.2/10",
         "genre": "Drama, War",
         "duration": "1h 59min",
@@ -168,6 +172,7 @@
     },
     "Kong: Skull Island": {
         "title": "Kong: Skull Island",
+        "price": 500,
         "rating": "6.7/10",
         "genre": "Action, Adventure, Fantasy",
         "duration": "1h 58min",
@@ -206,6 +211,7 @@
     },
     "Oblivion": {
         "title": "Oblivion",
+        "price": 500,
         "rating": "7.0/10",
         "genre": "Sci-Fi, Action, Adventure",
         "duration": "2h 4min",
@@ -239,6 +245,7 @@
     },
     "The Hobbit: An Unexpected Journey": {
         "title": "The Hobbit: An Unexpected Journey",
+        "price": 500,
         "rating": "7.8/10",
         "genre": "Adventure, Fantasy",
         "duration": "2h 49min",
@@ -272,6 +279,7 @@
     },
     "Due Date": {
         "title": "Due Date",
+        "price": 500,
         "rating": "6.5/10",
         "genre": "Comedy, Drama",
         "duration": "1h 35min",
@@ -305,6 +313,7 @@
     },
     "Kick Ass 2": {
         "title": "Kick Ass 2",
+        "price": 500,
         "rating": "6.5/10",
         "genre": "Action, Comedy, Crime",
         "duration": "1h 43min",
@@ -338,6 +347,7 @@
     },
     "John Wick": {
         "title": "John Wick",
+        "price": 500,
         "rating": "7.4/10",
         "genre": "Action, Crime, Thriller",
         "duration": "1h 41min",
@@ -371,6 +381,7 @@
     },
     "Spider-Man: No Way Home": {
         "title": "Spider-Man: No Way Home",
+        "price": 500,
         "rating": "8.2/10",
         "genre": "Action, Adventure, Sci-Fi",
         "duration": "2h 28min",

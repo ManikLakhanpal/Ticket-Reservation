@@ -24,15 +24,13 @@
                 <p class="genre"><%= movie.genre %></p>
                 <p class="duration"><%= movie.duration %></p>
                 <p class="languages"><%= movie.languages %></p>
+                <p style="color: rgb(50, 226, 50);">₹<%= movie.price %></p>
                 
-                <button class="book-ticket">
-                    <a 
-                        href="/book/<%= movie.title %>"
-                        style="text-decoration: none; color: white;"
-                    >
-                        Book Tickets
-                    </a>
-                </button>
+                <form id="paymentForm">
+                    <button type="submit" class="book-ticket" style="text-decoration: none; color: white;">
+                        Book Now
+                    </button>
+                </form>
             </div>
         </section>
 
@@ -71,5 +69,36 @@
     <footer>
         <p>&copy; 2025 BookMyShow Clone. All rights reserved.</p>
     </footer>
+    <script>
+        document.getElementById("paymentForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const movieTitle = "<%= movie.title %>";
+
+            const proceed = confirm("Are you sure you want to buy the ticket?");
+
+            if (!proceed) {
+                return alert("Request was not processed");
+            }
+
+            if (!movieTitle) {
+                return alert("Email and movie title are required!");
+            }
+
+            try {
+                const response = await fetch("/pay", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ movieTitle })
+                });
+
+                const result = await response.json();
+                alert(result.message);
+            } catch (error) {
+                console.error("Payment request failed", error);
+                alert("Something went wrong. Please try again!");
+            }
+        });
+    </script>
 </body>
 </html>
