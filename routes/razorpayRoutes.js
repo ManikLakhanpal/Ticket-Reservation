@@ -12,20 +12,21 @@ const movies = JSON.parse(fs.readFileSync("./data/movies.json", "utf8"));
 
 router.post("/order", auth, async (req, res) => {
   try {
-
     const { movieTitle } = req.body;
     const amount = req.body.amount * 100; // Amount is in paise
     const { email } = req.user;
 
     // * Check if email and movieName are there
     if (!email || !movieTitle) {
-        return res.status(400).json({ message: "Email and movieTitle are required." });
+      return res
+        .status(400)
+        .json({ message: "Email and movieTitle are required." });
     }
 
     // * Check if movie exists in the db
     const movie = movies[movieTitle];
     if (!movie) {
-        return res.status(404).json({ message: "Movie not found." });
+      return res.status(404).json({ message: "Movie not found." });
     }
 
     var razorpay = new Razorpay({
@@ -56,11 +57,17 @@ router.post("/order", auth, async (req, res) => {
   }
 });
 
-router.post("/payment-success-status", auth,  async (req, res) => {
-  const { razorpay_order_id, razorpay_payment_id, razorpay_signature, movieTitle, price } =
-    req.body;
-    
-    const { uid, email } = req.user;
+router.post("/payment-success-status", auth, async (req, res) => {
+  const {
+    razorpay_order_id,
+    razorpay_payment_id,
+    razorpay_signature,
+    movieTitle,
+    price,
+  } = req.body;
+
+  const { uid, email } = req.user;
+  const movieData = movies[movieTitle];
 
   const hmac = crypto.createHmac("sha256", process.env.RAZORPAY_SECRET);
   hmac.update(razorpay_order_id + "|" + razorpay_payment_id); // Concatenating order_id and payment_id
@@ -72,7 +79,7 @@ router.post("/payment-success-status", auth,  async (req, res) => {
     const newOrder = new Order({ uid, movieName: movieTitle, amount: price });
     await newOrder.save();
 
-    sendBookingConfirmation(email, movieTitle);
+    sendBookingConfirmation(email, movieData);
 
     res.send({ success: true, message: "Payment verified successfully!" }); // Sending a success response
   } else {
@@ -82,7 +89,5 @@ router.post("/payment-success-status", auth,  async (req, res) => {
       .send({ success: false, message: "Payment verification failed." }); // Sending a failure response
   }
 });
-
-
 
 export default router;
