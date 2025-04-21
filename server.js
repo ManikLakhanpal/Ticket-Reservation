@@ -22,7 +22,11 @@ app.use(cookieParser());
 app.set('view engine', 'ejs');
 app.use("/api/auth", authRoutes); 
 app.use("/", mainRoutes);
-app.use("/", paymentRoutes);
+app.use("/api", paymentRoutes);
+
+app.get("/login", (req, res) => {
+    res.render("login");
+  });
 
 app.listen(port, () => 
     console.log(`Server running on port http://localhost:${port}`)

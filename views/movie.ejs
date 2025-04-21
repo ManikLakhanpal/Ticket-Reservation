@@ -82,7 +82,7 @@
 
           try {
               // * Step 1: Create order
-              const orderResponse = await fetch("/order", {
+              const orderResponse = await fetch("/api/pay", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ amount, movieTitle }) // amount should be in INR
@@ -103,7 +103,7 @@
                   order_id: orderData.id,
                   handler: async function (response) {
                       // * Step 3: Send payment verification data to backend
-                      const verifyResponse = await fetch("/payment-success-status", {
+                      const verifyResponse = await fetch("/api/payment-success-status", {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },
                           body: JSON.stringify({

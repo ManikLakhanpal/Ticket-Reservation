@@ -10,7 +10,7 @@ const router = Router();
 
 const movies = JSON.parse(fs.readFileSync("./data/movies.json", "utf8"));
 
-router.post("/order", auth, async (req, res) => {
+router.post("/pay", auth, async (req, res) => {
   try {
     const { movieTitle } = req.body;
     const amount = req.body.amount * 100; // Amount is in paise
