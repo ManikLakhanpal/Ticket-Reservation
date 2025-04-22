@@ -19,11 +19,9 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(cookieParser());
 
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
 app.set('view engine', 'ejs');
+
+// * Routes below
 app.use("/api/auth", authRoutes); 
 app.use("/", mainRoutes);
 app.use("/api", paymentRoutes);
