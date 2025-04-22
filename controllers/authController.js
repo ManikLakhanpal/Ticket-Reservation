@@ -10,7 +10,7 @@ async function loginUser(req, res) {
     res.cookie("auth_token", token, {
       httpOnly: true,
       secure: process.env.PROD == true ? true : false,
-      sameSite: "Lax",
+      sameSite: process.env.PROD == true ? "None" : "Lax",
       maxAge: 3 * 60 * 60 * 1000, // * 3 hours
     });
 
@@ -41,16 +41,17 @@ async function signupUser(req, res) {
 
     const newUser = new User({ name, email, password });
     await newUser.save();
-    const token = await user.generateAuthToken();
+    const token = await newUser.generateAuthToken();
 
     console.log("✅ User saved in MongoDB:", newUser);
 
     res.cookie("auth_token", token, {
       httpOnly: true,
       secure: process.env.PROD == true ? true : false,
-      sameSite: "None",
+      sameSite: process.env.PROD == true ? "None" : "Lax",
       maxAge: 3 * 60 * 60 * 1000, // * 3 hours
     });
+
     res.redirect("/");
   } catch (error) {
     console.error("Signup Error:", error);

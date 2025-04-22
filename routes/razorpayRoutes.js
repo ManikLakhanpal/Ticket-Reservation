@@ -1,4 +1,4 @@
-import fs from "fs";
+import Movie from "../models/movieSchema.js";
 import { Router } from "express";
 import Razorpay from "razorpay";
 import crypto from "crypto";
@@ -8,12 +8,12 @@ import sendBookingConfirmation from "../controllers/emailController.js";
 
 const router = Router();
 
-const movies = JSON.parse(fs.readFileSync("./data/movies.json", "utf8"));
-
 router.post("/pay", auth, async (req, res) => {
   try {
     const { movieTitle } = req.body;
-    const amount = req.body.amount * 100; // Amount is in paise
+
+    // ? Amount in peise here
+    const amount = req.body.amount * 100; 
     const { email } = req.user;
 
     // * Check if email and movieName are there
@@ -24,7 +24,7 @@ router.post("/pay", auth, async (req, res) => {
     }
 
     // * Check if movie exists in the db
-    const movie = movies[movieTitle];
+    const movie = Movie.findOne({title: movieTitle});
     if (!movie) {
       return res.status(404).json({ message: "Movie not found." });
     }

@@ -4,7 +4,7 @@ import { Router } from "express";
 
 const router = Router();
 
-// Home page route: fetch all movies and filter featured ones
+// * HomePage route below
 router.get("/", auth, async (_, res) => {
   try {
     const allMovies = await Movie.find({});
@@ -22,7 +22,7 @@ router.get("/", auth, async (_, res) => {
   }
 });
 
-// Movie detail page
+// * MoviePage route below
 router.get("/movie/:id", auth, async (req, res) => {
   try {
     const movieId = decodeURIComponent(req.params.id);
@@ -39,6 +39,7 @@ router.get("/movie/:id", auth, async (req, res) => {
   }
 });
 
+// * Route for login page
 router.get("/login", (req, res) => {
   res.render("login");
 });
