@@ -19,14 +19,14 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(cookieParser());
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
 app.set('view engine', 'ejs');
 app.use("/api/auth", authRoutes); 
 app.use("/", mainRoutes);
 app.use("/api", paymentRoutes);
-
-app.get("/login", (req, res) => {
-    res.render("login");
-  });
 
 app.listen(port, () => 
     console.log(`Server running on port http://localhost:${port}`)
