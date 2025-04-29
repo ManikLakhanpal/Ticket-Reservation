@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    padding: 0;
+}
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+    color: #f9d342;
+    border: 2px solid #f9d342;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 9999; 
+}
+
+.back-button:hover {
+    background-color: #f9d342;
+    color: #000;
+    transform: scale(1.1);
+}
+
+
+.header {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #f9d342;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.order-card {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 25px;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    border-left: 5px solid #f9d342;
+}
+
+.order-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.05), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+
+.order-field {
+    margin-bottom: 12px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.label {
+    font-weight: bold;
+    color: #bbb;
+    margin-right: 10px;
+}
+
+.value {
+    color: #fff;
+}
+
+.no-orders {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 20px;
+    color: #ccc;
+}
+
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .order-card {
+        padding: 20px;
+    }
+}
