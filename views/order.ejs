@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/order.css">
+</head>
+<body>
+
+  <a class="back-button" href="/"> Back </a>
+
+  <div class="header">
+    <h1>Order Details</h1>
+  </div>
+
+  <div class="container">
+    <% if (orders && orders.length > 0) { %>
+      <% orders.forEach(order => { %>
+        <div class="order-card">
+          <div class="order-field">
+            <span class="label">Movie Name:</span>
+            <span class="value"><%= order.movieName %></span>
+          </div>
+          <div class="order-field">
+            <span class="label">Amount:</span>
+            <span class="value">₹<%= order.amount %></span>
+          </div>
+          <div class="order-field">
+            <span class="label">Ordered On:</span>
+            <span class="value"><%= new Date(order.createdAt).toLocaleString() %></span>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <div class="no-orders">No orders found.</div>
+    <% } %>
+  </div>
+
+</body>
+</html>

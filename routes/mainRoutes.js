@@ -1,5 +1,6 @@
 import auth from "../middleware/auth.js";
 import Movie from "../models/movieSchema.js";
+import Order from "../models/order.js";
 import { Router } from "express";
 
 const router = Router();
@@ -37,6 +38,19 @@ router.get("/movie/:id", auth, async (req, res) => {
     console.error("Error fetching movie:", err);
     res.status(500).send("Server error");
   }
+});
+
+// * Order Page route below
+
+router.get("/orders", async(req, res) => {
+
+  try {
+    const orders = await Order.find().sort({ createdAt: -1 });
+    res.render('order', { orders });
+  } catch (err) {
+    res.status(500).send("Error fetching orders");
+  }
+
 });
 
 // * Route for login page
