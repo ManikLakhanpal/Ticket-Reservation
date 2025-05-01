@@ -42,10 +42,13 @@ router.get("/movie/:id", auth, async (req, res) => {
 
 // * Order Page route below
 
-router.get("/orders", async(req, res) => {
+router.get("/orders", auth, async(req, res) => {
 
   try {
-    const orders = await Order.find().sort({ createdAt: -1 });
+    const { uid } = req.user;
+
+    const orders = await Order.find({uid: uid}).sort({ createdAt: -1 });
+    
     res.render('order', { orders });
   } catch (err) {
     res.status(500).send("Error fetching orders");
