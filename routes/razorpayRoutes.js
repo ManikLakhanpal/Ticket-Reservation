@@ -67,7 +67,8 @@ router.post("/payment-success-status", auth, async (req, res) => {
   } = req.body;
 
   const { uid, email } = req.user;
-  const movieData = Movie.findOne({title: movieTitle});
+  const movieData = await Movie.findOne({title: movieTitle});
+  console.log(movieData);
 
   const hmac = crypto.createHmac("sha256", process.env.RAZORPAY_SECRET);
   hmac.update(razorpay_order_id + "|" + razorpay_payment_id); // Concatenating order_id and payment_id

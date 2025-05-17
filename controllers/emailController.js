@@ -1,6 +1,7 @@
 import transporter from "../config/nodeMailer.js";
 
 function sendBookingConfirmation(email, movie) {
+    console.log(movie);
     const mailOptions = {
         from: process.env.EMAIL_USER,
         to: email,
